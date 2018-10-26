@@ -1,0 +1,21 @@
+/* 这里的样式只应用于这个自定义组件 */
+.container{
+  display:inline-flex;
+  flex-direction: row;
+  padding: 10rpx;
+  width: 90rpx;
+}
+.container image{
+  width: 32rpx;
+  height: 28rpx;
+}
+.container text{
+  font-family: "PingFangSC-Thin";
+  font-size: 24rpx;
+  line-height: 24rpx;
+  color: #bbb;
+  position: relative;
+  bottom: 10rpx;
+  left: 6rpx;
+  
+}

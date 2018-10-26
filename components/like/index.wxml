@@ -1,0 +1,5 @@
+<!-- 这是自定义组件的内部WXML结构 -->
+<view bind:tap="onLike" class='container'>
+<image src="{{like?yesSrc:noSrc}}"></image>
+<text class="">{{count}}</text>
+</view>

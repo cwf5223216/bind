@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/classic/classic",
+    "components/classic/movie/index",
+    "components/epsoide/index",
+    "components/navi/index",
+    "pages/book/book",
+    "pages/my/my",
+    "components/book/index",
+    "pages/book-detail/book-detail",
+    "components/tag/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "孤岛",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#000000",
+    "backgroundColor": "#ffffff",
+    "color": "#c7c7c7",
+    "list": [
+      {
+        "text": "流行",
+        "pagePath": "pages/classic/classic",
+        "iconPath": "/images/classic.png",
+        "selectedIconPath": "/images/classic@highlight.png"
+      },
+      {
+        "text": "书籍",
+        "pagePath": "pages/book/book",
+        "iconPath": "/images/book.png",
+        "selectedIconPath": "/images/book@highlight.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/my/my",
+        "iconPath": "/images/my.png",
+        "selectedIconPath": "/images/my@highlight.png"
+      }
+    ]
+  }
+}
