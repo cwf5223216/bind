@@ -10,7 +10,7 @@
     <text class="headline">短评</text>
     <text class="shadow" wx:if="{{noComment}}">还没有短评</text>
     <view class="comment-container">
-      <block wx:for="{{comments}}">
+      <block wx:for="{{util.limit(comments,5)}}">
         <v-tag class="tag" text="{{item.content}}">
           <text class="num" slot="after">{{'+' + item.nums}}</text>
         </v-tag>
@@ -47,10 +47,8 @@
     <text>输入短评</text>
   </view>
    <view class="like-container">
-      <like-cmp bind:like="onLike" class="like" like="{{like}}" count="{{count}}" />
-      <img-btn-cmp class="share-btn" open-type="share">
-        <image class="share" slot="img" src="/images/icon/share.png" />
-      </img-btn-cmp>
+      <v-like bind:like="onLike" class="like" like="{{likeStatus}}" count="{{likeCount}}" />
+      
     </view>
 </view>
 

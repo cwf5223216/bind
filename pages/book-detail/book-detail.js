@@ -3,6 +3,8 @@ import {
     BookModel
 } from '../../models/book.js'
 const bookModel = new BookModel()
+import {LikeModel} from '../../models/like.js'
+const likeModel = new LikeModel()
 
 
 Page({
@@ -11,10 +13,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+   
     comments:[],
     book:null,
     likeStatus:false,
-    likeCount:0
+    likeCount:0,
+    posting:false
 
   },
 
@@ -46,6 +50,25 @@ Page({
     })
 
   },
+  
+  onLike:function (event)
+  {
+    console.log(event)
+    let behavior = event.detail.behavior
+    likeModel.like(behavior, this.data.book.id,400)
+  },
+  onFakePost:function(event){
+     this.setData({
+       posting:true
+     })
+     console.log(this.data.posting)
+  },
+  onCancel:function(event){
+    this.setData({
+      posting:false
+    })
+  },
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
