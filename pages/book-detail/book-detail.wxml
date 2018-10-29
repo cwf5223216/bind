@@ -10,7 +10,7 @@
     <text class="headline">短评</text>
     <text class="shadow" wx:if="{{noComment}}">还没有短评</text>
     <view class="comment-container">
-      <block wx:for="{{util.limit(comments,5)}}">
+      <block wx:for="{{util.limit(comments,15)}}">
         <v-tag class="tag" text="{{item.content}}">
           <text class="num" slot="after">{{'+' + item.nums}}</text>
         </v-tag>
@@ -61,16 +61,17 @@
     <text class="cancel" bind:tap="onCancel">取消</text>
   </view>
   <view class="comment-container">
-    <block wx:for="{{util.limit(comments, 3)}}">
-      <tag-cmp bind:tapping="onPost" tag-class="tag" text="{{item.content}}">
-        <text class="num" slot="after">{{'+' + item.nums}}</text>
-      </tag-cmp>
-    </block>
+    <block wx:for="{{util.limit(comments,3)}}">
+        <v-tag bind:tapping="onPost" class="tag" text="{{item.content}}">
+          <text class="num" slot="after">{{'+' + item.nums}}</text>
+        </v-tag>
+      </block>
   </view>
   <input focus="{{posting}}" confirm-type="发送" class="post" placeholder='短评最多12个字' bindconfirm="onPost"></input>
   <!-- <image class="tip" src="/images/book/tip.png"></image> -->
 </view>
 
+<v-mask wx:if="{{posting}}" />
 
 
 <wxs module="util">

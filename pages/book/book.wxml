@@ -1,11 +1,9 @@
 <!--pages/book/book.wxml-->
-<!-- <block wx:for="{{books}}">
-    <v-book class="book" book="{{item}}"></v-book>
-</block> -->
+
 <view>
-    <view class="container">
+    <view wx:if="{{!searching}}" class="container">
         <view class="header">
-            <view class='box' bind:tap="onActivateSearch">
+            <view class='box' bind:tap="onSearching">
                 <image src="/images/icon/search.png" />
                 <text>搜索书籍</text>
             </view>
@@ -19,5 +17,5 @@
             </view>
         </view>
     </view>
-    <search-cmp more="{{more}}" wx:if="{{searchPanel}}" bind:cancel="onCancel" />
+    <v-search  wx:if="{{searching}}" bind:cancel="onCancel" />
 </view>
