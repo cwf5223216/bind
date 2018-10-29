@@ -81,6 +81,7 @@ Component({
   },
   /*组件的方法*/
   methods: {
+    //监听并修改tag的text属性值
     onTap:function(event){
       this.triggerEvent('tapping',{
         text:this.properties.text

@@ -11,12 +11,16 @@ Component({
     /*组件的属性列表*/
     properties: {
         /* ... */
+        
     },
     /*组建的初始数据*/
     data: {
         //MVVM数据绑定
         historyWords:[],
-        hotWords:[]
+        hotWords:[],
+        dataArray:[],
+        searching:false,
+        q:''
     },
     attached: function () { 
         const historyWords = keyworldModel.getHistory()
@@ -34,13 +38,43 @@ Component({
 
     /*组件的方法*/
     methods: {
+        //关闭搜索
         onCancel(event) {
             //监听事件函数，第一个参数事件名
             this.triggerEvent('cancel', {}, {})
         },
+        //搜索
         onConfirm(event) {
-            const word = event.detail.value
-            keyworldModel.addToHistory(word)
+            //为什么不在回调函数中使用，因为用户体验，当用户敲击回车时，我们就给他反应，隐藏
+            this.setData({
+                searching:true
+            })
+            //加入缓存
+            // const word = event.detail.value
+            // keyworldModel.addToHistory(word)
+            //监听后去服务器请求数据
+            const q = event.detail.value || event.detail.text
+            keyworldModel.search(0,q).then(res=>{
+                this.setData({
+                    dataArray:res.books,
+                    q:q
+                    /*searching:true*/
+                })
+                //修改后，当服务器返回数据后，我们认为用户输入的字段是正确的，有返回结果，我们才把它写入到缓存中
+                console.log(this.data.dataArray)
+                keyworldModel.addToHistory(q)
+            })
+
+        },
+        //清空搜索
+        onDelete(event){
+            this.setData({
+                searching:false,
+                dataArray:[],
+                q:''
+            })
+            console.log(this.data.dataArray,this.data.q)   
         }
+        
     }
 })
